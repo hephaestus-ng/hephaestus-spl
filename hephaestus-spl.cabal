@@ -1,0 +1,30 @@
+name:                hephaestus-spl
+version:             0.1.0.0
+-- synopsis:
+-- description:
+homepage:            https://github.com/githubuser/hephaestus-spl#readme
+license:             BSD3
+license-file:        LICENSE
+author:              Author name here
+maintainer:          example@example.com
+copyright:           2018 Author name here
+category:            Web
+build-type:          Simple
+cabal-version:       >=1.10
+extra-source-files:  README.md
+
+library
+  hs-source-dirs:  src
+  exposed-modules: Data.SPL
+  build-depends:   base,
+                   hephaestus-fm
+
+
+test-suite hephaestus-spl-test
+  type:           exitcode-stdio-1.0
+  hs-source-dirs: test
+  main-is:        Spec.hs
+  build-depends:  base,
+                  hephaestus-fm,
+                  hephaestus-spl
+  ghc-options:    -threaded -rtsopts -with-rtsopts=-N
