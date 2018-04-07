@@ -1,0 +1,9 @@
+resolver: lts-11.3
+
+packages:
+- .
+
+extra-deps:
+- pretty-tree-0.1.0.0
+- git: https://github.com/hephaestus-ng/hephaestus-fm.git
+  commit: HEAD

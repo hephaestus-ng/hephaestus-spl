@@ -1,0 +1,32 @@
+name:                hephaestus-spl
+version:             0.1.0.0
+github:              "hephaestus-ng/hephaestus-spl"
+license:             BSD3
+author:              "Thiago Figueiredo"
+maintainer:          "thiagofigueiredo777@gmail.com"
+copyright:           "CC"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+description: Please see the README on Github at <https://github.com/hephaestus-ng/hephaestus-spl#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- hephaestus-fm
+
+library:
+  source-dirs: src
+
+tests:
+  hephaestus-spl-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - hephaestus-spl
+    - hephaestus-fm
