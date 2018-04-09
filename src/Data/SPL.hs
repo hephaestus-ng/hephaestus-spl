@@ -26,13 +26,18 @@ import Data.FM.Expression
 import Data.FM.ProductConfiguration
 
 class Asset a where
-  create :: Product a
+  create  :: Product a
+  parserT :: String -> Either String (Transformation a)
   -- export :: Product a -> IO ()
 
 data SPL a = SPL FeatureModel (ConfigurationKnowledge a)
 
 data Product a = Product a
   deriving(Show)
+
+instance Functor Product where
+  fmap f (Product a) = Product (f a)
+
 
 type Transformation a = SPL a -> Product a -> Product a
 
