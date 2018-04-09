@@ -6,14 +6,15 @@ import Data.SPL
 import Data.FM.Expression
 
 parseCK :: (Asset a) => Parsec String () (ConfigurationKnowledge a)
-parseCK = undefined
+parseCK =  many1 parseItem 
 
 parseItem :: (Asset a) => Parsec String () ((FeatureExp, [Transformation a]))
 parseItem = parseExp      >>= \exp -> many space
-         >> string "=>"  >> many space  
+         >> string "=>"   >> many space  
          >> string "["    >> many space
          >> parseTransformations >>= \ts -> many space
-         >> string "]" >> return (exp, ts)
+         >> string "]"    >> many (space <|> newline <|> tab)
+         >> return (exp, ts)
                                        
 
 parseExp = undefined
