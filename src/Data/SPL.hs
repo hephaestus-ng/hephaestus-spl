@@ -21,14 +21,16 @@ related to product line engineering. It includes:
 
 module Data.SPL where
 
+import Text.Parsec
+
 import Data.FM.FeatureModel
 import Data.FM.Expression
 import Data.FM.ProductConfiguration
 
 class Asset a where
   create  :: Product a
-  parserT :: String -> Either String (Transformation a)
-  -- export :: Product a -> IO ()
+  parserT :: Parsec String () (Transformation a)
+
 
 data SPL a = SPL FeatureModel (ConfigurationKnowledge a)
 
