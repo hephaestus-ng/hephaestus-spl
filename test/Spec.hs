@@ -1,7 +1,9 @@
+import Control.Monad
+import Test.HUnit.Base
 
-import Data.FM.Feature
-
-import Test.HUnit
-
-main :: IO ()
-main = putStrLn "Test suite not yet implemented"
+main :: IO Test.HUnit.Base.Counts
+-- main = runFeatureTests
+main = do
+    a    <-
+    -- d    <- runXMLParserTests
+    return

@@ -23,14 +23,14 @@ module Data.SPL where
 
 import Text.Parsec
 
-import Data.FM.FeatureModel
-import Data.FM.Expression
+import Data.FM.Types
 import Data.FM.ProductConfiguration
 
 class Asset a where
-  create  :: Product a
-  parserT :: Parsec String () (Transformation a)
-
+  initialize :: Product a
+  parserT    :: Parsec String () (Transformation a)
+  -- parserA    :: Parsec String () a
+  -- export  :: a -> IO ()
 
 data SPL a = SPL FeatureModel (ConfigurationKnowledge a)
 
@@ -47,7 +47,8 @@ type ConfigurationKnowledge a = [(ConfigurationItem a)]
 
 type ConfigurationItem a = (FeatureExp, [Transformation a])
 
+
 build :: (Asset a) => SPL a -> ProductConfiguration -> Product a
-build spl@(SPL fm ck) im = foldr (\t -> t spl) (create) ts
+build spl@(SPL fm ck) im = foldr (\t -> t spl) (initialize) ts
  where
    ts =  concat [t | (e, t) <- ck, isValidExp e im]
