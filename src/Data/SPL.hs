@@ -29,6 +29,7 @@ import Data.FM.ProductConfiguration
 class Asset a where
   initialize :: Product a
   parserT    :: Parsec String () (Transformation a)
+  -- applyT     :: Product a -> Transformation a -> Product a
   -- parserA    :: Parsec String () a
   -- export  :: a -> IO ()
 
