@@ -29,9 +29,10 @@ import Data.FM.ProductConfiguration
 class Asset a where
   initialize :: Product a
   parserT    :: Parsec String () (Transformation a)
+  export     :: Product a -> IO ()
   -- applyT     :: Product a -> Transformation a -> Product a
   -- parserA    :: Parsec String () a
-  -- export  :: a -> IO ()
+ 
 
 data SPL a = SPL FeatureModel (ConfigurationKnowledge a)
 
