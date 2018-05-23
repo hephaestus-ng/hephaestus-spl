@@ -23,16 +23,18 @@ module Data.SPL where
 
 import Text.Parsec
 
-import Data.FM.Types
-import Data.FM.ProductConfiguration
+import Data.FM
+
+type Source = String
+type Target = String
 
 class Asset a where
   initialize :: Product a
   parserT    :: Parsec String () (Transformation a)
-  export     :: Product a -> IO ()
+  export     :: Source -> Target -> Product a -> IO ()
   -- applyT     :: Product a -> Transformation a -> Product a
   -- parserA    :: Parsec String () a
- 
+
 
 data SPL a = SPL FeatureModel (ConfigurationKnowledge a)
 
