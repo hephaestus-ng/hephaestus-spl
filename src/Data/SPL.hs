@@ -32,8 +32,7 @@ class Asset a where
   initialize :: Product a
   parserT    :: Parsec String () (Transformation a)
   export     :: Source -> Target -> Product a -> IO ()
-  -- applyT     :: Product a -> Transformation a -> Product a
-  -- parserA    :: Parsec String () a
+
 
 
 data SPL a = SPL FeatureModel (ConfigurationKnowledge a)
