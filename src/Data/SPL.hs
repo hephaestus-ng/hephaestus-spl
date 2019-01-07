@@ -30,12 +30,13 @@ type Target = String
 
 class Asset a where
   initialize :: Product a
+  parserA    :: Parsec String () a
   parserT    :: Parsec String () (Transformation a)
   export     :: Source -> Target -> Product a -> IO ()
 
 
 
-data SPL a = SPL FeatureModel (ConfigurationKnowledge a)
+data SPL a = SPL FeatureModel (ConfigurationKnowledge a) a
 
 data Product a = Product a
   deriving(Show)
@@ -52,6 +53,6 @@ type ConfigurationItem a = (FeatureExp, [Transformation a])
 
 
 build :: (Asset a) => SPL a -> ProductConfiguration -> Product a
-build spl@(SPL fm ck) im = foldr (\t -> t spl) (initialize) ts
+build spl@(SPL fm ck asset) im = foldr (\t -> t spl) (initialize) ts
  where
    ts =  concat [t | (e, t) <- ck, isValidExp e im]
