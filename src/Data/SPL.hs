@@ -32,7 +32,7 @@ class Asset a where
   initialize :: Product a
   parserA    :: Parsec String () a
   parserT    :: Parsec String () (Transformation a)
-  export     :: Source -> Target -> Product a -> IO ()
+  export     :: Source -> Target -> a -> Product a -> IO ()
 
 
 
